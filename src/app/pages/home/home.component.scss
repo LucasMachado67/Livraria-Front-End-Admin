@@ -1,0 +1,16 @@
+
+
+.menuDisplay {
+    margin-top: 65px;
+    display: flex;
+    align-items: center;
+
+    .image-container{
+        width: 1236px;    
+        height: 664px;
+        background-image: url('../../../assets/HomeADM.jpg');
+        background-size: cover; 
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}

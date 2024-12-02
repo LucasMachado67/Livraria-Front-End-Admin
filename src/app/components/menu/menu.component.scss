@@ -1,0 +1,38 @@
+.container{
+    display: flex;
+    margin: 0px;
+    flex-direction: column;
+    border-right: 3px solid black;
+    height: 664px;
+    width: 300px;
+
+    .imgDisplay{
+        display: flex;
+        border: 1px solid black;
+        margin: 15px;
+        height: 200px;
+        justify-content: center;
+        align-items: center;
+        img{
+            height: 100px;
+        }
+    }
+
+    .content{
+        height: 400px;
+
+        .nav-item{
+            font-size: 25px;
+            font-weight: bold;
+            a{
+                color: black;
+                &:hover{
+                    margin-right: 5px;
+                    color: darkgray;
+                }
+            }
+
+            
+        }
+    }
+}

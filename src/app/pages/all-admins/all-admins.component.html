@@ -1,0 +1,23 @@
+<app-navigation></app-navigation>
+
+<table class="table" *ngIf="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Sex</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr *ngFor="let a of admins; index as i">
+            <td>{{i+1}}</td>
+            <td>{{a.email}}</td>
+            <td>{{a.name}}</td>
+            <td>{{a.phone}}</td>
+            <td>{{a.sex}}</td>
+            <td><button class="btn btn-success" (click)="selectAdmin(i)">Select</button></td>
+         </tr>
+    </tbody>
+</table>

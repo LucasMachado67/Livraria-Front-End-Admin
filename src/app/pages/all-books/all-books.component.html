@@ -1,0 +1,31 @@
+<app-navigation></app-navigation>
+
+<table class="table" *ngIf="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th>Price</th>
+            <th>Pages</th>
+            <th>Language</th>
+            <th>Book Cover</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr *ngFor="let b of books; index as i">
+            <td>{{i+1}}</td>
+            <td>{{b.title}}</td>
+            <td>{{b.author}}</td>
+            <td>{{b.year}}</td>
+            <td>{{b.price}}</td>
+            <td>{{b.pages}}</td>
+            <td>{{b.language}}</td>
+            <td>{{b.bookCover}}</td>
+            <td>{{b.quantity}}</td>
+            <td><button class="btn btn-success" (click)="selectBook(i)">Select</button></td>
+         </tr>
+    </tbody>
+</table>

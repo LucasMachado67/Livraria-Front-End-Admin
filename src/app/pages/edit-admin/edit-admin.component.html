@@ -1,0 +1,23 @@
+<app-navigation></app-navigation>
+
+<img src="../../../assets/editADM.png" alt="">
+<form action="">
+    <label for="Email">Email:</label>
+    <input type="text" placeholder="Email" class="form-control" name="Email" [(ngModel)]="admin.email">
+    <label for="Name">Name:</label>
+    <input type="text" placeholder="Name" class="form-control" name="Name" [(ngModel)]="admin.name">
+    <label for="Password">Password:</label>
+    <input type="text" placeholder="Password" class="form-control" name="Password" [(ngModel)]="admin.password">
+    <label for="Phone">Phone:</label>
+    <input type="text" placeholder="Phone" class="form-control" name="Phone" maxlength="12" [(ngModel)]="admin.phone" (input)="formatPhone()">
+    <div>
+        <select name="sex" [(ngModel)]="admin.sex">
+            <option value="" disabled selected>Sex</option>
+            <option value="Man">Men</option>
+            <option value="Woman">Woman</option>
+        </select>
+    </div>
+    
+    <input type="button" value="Edit"  class="btn btn-warning" (click)="editAdmin()">
+    <input type="button" value="Remove"  class="btn btn-danger" (click)="removeAdmin()">
+    <input type="button" value="Cancel"  class="btn btn-secondary" (click)="cancel()">
