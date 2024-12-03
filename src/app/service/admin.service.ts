@@ -8,7 +8,7 @@ import { Admin } from '../Model/Admin';
 })
 export class AdminService {
 
-  private url:string = "http://localhost:8080";
+  private url:string = "https://livrariaback-end-production.up.railway.app";
   constructor(private http:HttpClient) { }
 
   addNewAdmin(adminData: Admin): Observable<Admin> {
