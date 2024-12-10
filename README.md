@@ -1,27 +1,39 @@
-# ADMLibrary
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.9.
+# Livraria E-commerce Front-End (Admin)
 
-## Development server
+Neste projeto, está a parte onde o será a administração do site e-commerce podendo adicionar/editar ou remover livros, consultar todos livros e diversas outras funções.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![Angular](https://img.shields.io/badge/Angular-17.3.0-red)
 
-## Code scaffolding
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.3-blue)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Instalação
 
-## Running unit tests
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/usuario/nome-do-repositorio.git
+   ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. Navegue até o diretório do projeto:
+   ```bash
+   cd nome-do-repositorio
+   ```
 
-## Running end-to-end tests
+3. Instale as dependências:
+   ```bash
+   npm install
+   ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+4. Para rodar a aplicação:
+   ```bash
+   ng serve
+   ```
 
-## Further help
+5. Acesse a aplicação no navegador em:
+   [http://localhost:4200](http://localhost:4200)
+    
+## Features futuras
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Adicionar um sistema de login para os admins
