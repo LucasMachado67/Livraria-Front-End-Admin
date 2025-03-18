@@ -1,6 +1,6 @@
 export class Admin{
 
-    id:number = 0;
+    id:number | null = null;
     email:string = "";
     name:string = "";
     password:string = "";

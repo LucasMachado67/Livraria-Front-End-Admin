@@ -1,0 +1,11 @@
+
+<app-navigation></app-navigation>
+
+<img src="../../../assets/editADM.png" alt="">
+<form action="">
+    <label for="Author">Author Name:</label>
+    <input type="text" placeholder="Name" class="form-control" name="Author" [(ngModel)]="author.author">
+    
+    <input type="button" value="Edit"  class="btn btn-warning" (click)="editAuthor()">
+    <input type="button" value="Remove"  class="btn btn-danger" (click)="removeAuthor()">
+    <input type="button" value="Cancel"  class="btn btn-secondary" (click)="cancel()">

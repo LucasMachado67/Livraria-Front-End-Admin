@@ -1,0 +1,27 @@
+<app-navigation></app-navigation>
+<form action="">
+    <img src="../../../assets/dia-mundial-do-livro.png" alt="">
+    <label for="author">Category:</label>
+    <input type="text"  class="form-control" name="category" [(ngModel)]="category.category">
+    
+        
+    <input type="button" value="Register" *ngIf="btnRegister" class="btn btn-primary" (click)="register()">
+</form>
+
+<table class="table" *ngIf="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr *ngFor="let c of categories; index as i">
+            <td>{{i+1}}</td>
+            <td>{{c.category}}</td>
+         </tr>
+    </tbody>
+</table>
+
+
+

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavigationComponent } from "../../components/navigation/navigation.component";
-import { AdminService } from '../../service/admin.service';
-import { Admin } from '../../Model/Admin';
+import { NavigationComponent } from "../../../components/navigation/navigation.component";
+import { AdminService } from '../../../service/admin.service';
+import { Admin } from '../../../Model/Admin';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 

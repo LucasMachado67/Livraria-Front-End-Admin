@@ -1,0 +1,26 @@
+<app-navigation></app-navigation>
+<form action="">
+    <img src="../../../assets/dia-mundial-do-livro.png" alt="">
+    <label for="author">Author:</label>
+    <input type="text" placeholder="Author" class="form-control" name="author" [(ngModel)]="author.author">
+    
+        
+    <input type="button" value="Register" *ngIf="btnRegister" class="btn btn-primary" (click)="register()">
+</form>
+
+<table class="table" *ngIf="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr *ngFor="let a of authors; index as i">
+            <td>{{i+1}}</td>
+            <td>{{a.author}}</td>
+         </tr>
+    </tbody>
+</table>
+
+

@@ -2,13 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Errand } from '../Model/Errand';
+import { environment } from '../../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrandService {
 
-  private url:string = "https://livrariaback-end-production.up.railway.app";
+  // private url:string = "https://livrariaback-end-production.up.railway.app";
+  readonly url = environment.url;
   constructor(private http:HttpClient) { }
 
 

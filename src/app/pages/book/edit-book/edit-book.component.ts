@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { Book } from '../../Model/Book';
-import { BookService } from '../../service/book.service';
+import { Book } from '../../../Model/Book';
+import { BookService } from '../../../service/book.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { NavigationComponent } from '../../components/navigation/navigation.component';
+import { NavigationComponent } from '../../../components/navigation/navigation.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Category } from '../../../Model/Category';
 
 @Component({
   selector: 'app-edit-book',
@@ -79,13 +80,13 @@ export class EditBookComponent {
 
   onCategoryChange(event: Event): void {
     const checkbox = event.target as HTMLInputElement;
-    const category = checkbox.value;
 
     if (checkbox.checked) {
-      this.book.categories.push(category);
-    } else {
-      this.book.categories = this.book.categories.filter(cat => cat !== category);
-    }
+          this.book.category = new Category();
+          this.book.category.category = checkbox.value;
+        } else {
+          this.book.category = new Category();
+        }
   }
 
   ngOnInit(): void {

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavigationComponent } from "../../components/navigation/navigation.component";
-import { Book } from '../../Model/Book';
-import { BookService } from '../../service/book.service';
+import { NavigationComponent } from "../../../components/navigation/navigation.component";
+import { Book } from '../../../Model/Book';
+import { BookService } from '../../../service/book.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';

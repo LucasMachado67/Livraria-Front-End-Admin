@@ -2,34 +2,35 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Admin } from '../Model/Admin';
+import { environment } from '../../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  private url:string = "https://livrariaback-end-production.up.railway.app";
+  readonly url = environment.url;
   constructor(private http:HttpClient) { }
 
   addNewAdmin(adminData: Admin): Observable<Admin> {
-    return this.http.post<Admin>(this.url + "/newAdmin", adminData);
+    return this.http.post<Admin>(this.url + "/admin/new", adminData);
   }
 
   select():Observable<Admin[]>{
-    return this.http.get<Admin[]>(this.url + "/allAdmins");
+    return this.http.get<Admin[]>(this.url + "/admin/all");
   }
 
-  edit(obj:Admin, id:number):Observable<Admin>{
-    return this.http.put<Admin>(this.url + "/allAdmins/" + id, obj);
+  edit(obj:Admin, id:number|null):Observable<Admin>  {
+    return this.http.put<Admin>(this.url + "/admin/" + id, obj);
   }
 
-  remove(id:number) :Observable<void>{
-    return this.http.delete<void>(this.url + "/allAdmins/" + id);
+  remove(id:number|null) :Observable<void>{
+    return this.http.delete<void>(this.url + "/admin/" + id);
   }
 
   admins:Admin[] = []
 
-  getAdminById(id: number): Observable<any> {
-    return this.http.get(`${this.url}/allAdmins/${id}`);
+  getAdminById(id: number|null): Observable<any> {
+    return this.http.get(`${this.url}/admin/${id}`);
   }
 }

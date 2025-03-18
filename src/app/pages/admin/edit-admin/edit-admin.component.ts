@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { NavigationComponent } from "../../components/navigation/navigation.component";
+import { NavigationComponent } from "../../../components/navigation/navigation.component";
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Admin } from '../../Model/Admin';
-import { AdminService } from '../../service/admin.service';
+import { Admin } from '../../../Model/Admin';
+import { AdminService } from '../../../service/admin.service';
 
 @Component({
   selector: 'app-edit-admin',
@@ -24,17 +24,17 @@ export class EditAdminComponent {
   admins:Admin[] = [];
 
   constructor(private service:AdminService,
-    private route: ActivatedRoute,
+    private routeActive: ActivatedRoute,
     private router: Router
   ){}
 
   editAdmin():void{
     this.service.edit(this.admin, this.admin.id)
-    .subscribe(retorno => {
+    .subscribe((retorno) => {
       
-      let position = this.admins.findIndex(obj => {
-        return obj.id == retorno.id;
-      });
+      let position = this.admins.findIndex((obj) => 
+        obj.id == retorno.id
+      );
  
       this.admins[position] = retorno;
       
@@ -42,27 +42,26 @@ export class EditAdminComponent {
       
       alert("Admin successfully altered!");
 
-      this.router.navigate(["/allAdmins"])
+      this.router.navigate(["/admin/all"])
     });
   }
 
   removeAdmin():void{
     this.service.remove(this.admin.id)
-    .subscribe(retorno => {
+    .subscribe((retorno) => {
       
       let position = this.admins.findIndex(obj => {
         return obj.id == this.admin.id;
       });
       this.admins.splice(position, 1);
       this.admin = new Admin(); 
-      alert("Admin removed!");
-      this.router.navigate(['/allAdmins']);
+      alert("Admin " + this.admin.name +"removed!");
+      this.router.navigate(['/admin/all']);
     });
   }
+
   cancel():void{
-
-    this.router.navigate(['/allAdmins']);
-
+    this.router.navigate(['/admin/all']);
   }
 
   formatPhone(): void {
@@ -76,24 +75,15 @@ export class EditAdminComponent {
     this.admin.phone = phone;
   }
 
-  ngOnInit(): void {
-
-    this.loadAdmin();
-  }
-
-  loadAdmin(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    if (id) {
-      this.service.getAdminById(id).subscribe(
-        (admin) => {
-          this.admin = admin;
-        },
-        (error) => {
-          console.error('Error while fetching data:', error);
+  ngOnInit() {
+    this.routeActive.paramMap.subscribe(params => {
+        let id = params.get('id');
+        if (id) {
+            this.service.getAdminById(Number(id)).subscribe((data) => {
+                this.admin = data;
+                console.log("Admin loaded:", this.admin);
+            });
         }
-      );
-    } else {
-      console.error('Código do livro não encontrado na rota.');
-    }
+    });
   }
 }

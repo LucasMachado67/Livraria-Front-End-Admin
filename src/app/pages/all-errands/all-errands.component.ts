@@ -38,18 +38,6 @@ export class AllErrandsComponent {
       },
     });
   }
-  // removeErrand():void{
-  //   this.service.remove(this.errand.code)
-  //   .subscribe(retorno => {
-      
-  //     let position = this.errands.findIndex(obj => {
-  //       return obj.code == this.errand.code;
-  //     });
-  //     this.errands.splice(position, 1);
-  //     this.errand = new Errand(); 
-  //     alert("Errand removed!");
-  //   });
-  // }
 
   ngOnInit(){
     this.select();

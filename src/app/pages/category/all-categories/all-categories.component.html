@@ -1,0 +1,18 @@
+<app-navigation></app-navigation>
+
+<table class="table" >
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr *ngFor="let c of categories; index as i">
+            <td>{{i+1}}</td>
+            <td>{{c.category}}</td>
+            <td><button class="btn btn-success" (click)="selectCategory(i)">Select</button></td>
+         </tr>
+    </tbody>
+</table>

@@ -1,0 +1,18 @@
+<app-navigation></app-navigation>
+
+<table class="table" >
+    <thead>
+        <tr>
+            <th>Code</th>
+            <th>Author Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr *ngFor="let a of authors; index as i">
+            <td>{{i+1}}</td>
+            <td>{{a.author}}</td>
+            <td><button class="btn btn-success" (click)="selectAuthor(i)">Select</button></td>
+         </tr>
+    </tbody>
+</table>

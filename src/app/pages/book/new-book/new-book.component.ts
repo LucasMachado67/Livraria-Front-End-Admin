@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule} from '@angular/common';
-import { Book } from '../../Model/Book';
-import { BookService } from '../../service/book.service';
-import { NavigationComponent } from "../../components/navigation/navigation.component";
+import { Book } from '../../../Model/Book';
+import { BookService } from '../../../service/book.service';
+import { NavigationComponent } from "../../../components/navigation/navigation.component";
+import { Category } from '../../../Model/Category';
 
 @Component({
   selector: 'app-new-book',
@@ -41,12 +42,12 @@ export class NewBookComponent {
 
   onCategoryChange(event: Event): void {
     const checkbox = event.target as HTMLInputElement;
-    const category = checkbox.value;
 
     if (checkbox.checked) {
-      this.book.categories.push(category);
+      this.book.category = new Category();
+      this.book.category.category = checkbox.value;
     } else {
-      this.book.categories = this.book.categories.filter(cat => cat !== category);
+      this.book.category = new Category();
     }
   }
   register() {
@@ -62,17 +63,6 @@ export class NewBookComponent {
       alert('Book added successfully');
     });
   }
-  // register():void{
-  //   this.service.addNewBook(this.book)
-  //   .subscribe(retorno => {
-
-  //     this.books.push(retorno);
-
-  //     this.book = new Book();
-
-  //     alert("Book successfully registered!");
-  //   });
-  // }
 
   selectBook(position:number):void{
 
