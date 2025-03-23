@@ -6,6 +6,9 @@ import { Book } from '../../../Model/Book';
 import { BookService } from '../../../service/book.service';
 import { NavigationComponent } from "../../../components/navigation/navigation.component";
 import { Category } from '../../../Model/Category';
+import { Author } from '../../../Model/Author';
+import { CategoryService } from '../../../service/category.service';
+import { AuthorService } from '../../../service/author.service';
 
 @Component({
   selector: 'app-new-book',
@@ -22,12 +25,19 @@ import { Category } from '../../../Model/Category';
 export class NewBookComponent {
 
   book = new Book();
+  author = new Author();
+  category = new Category();
+  books:Book[] = [];
+  authors:Author[] = [];
+  categories:Category[] = [];
   btnRegister:Boolean = true;
   table:Boolean = true;
-  books:Book[] = [];
   selectedImage: File | null = null;
 
-  constructor(private service:BookService){}
+  constructor(private service:BookService,
+    private categoryService:CategoryService,
+    private authorService:AuthorService
+  ){}
 
   select():void {
     this.service.select()
@@ -50,10 +60,19 @@ export class NewBookComponent {
       this.book.category = new Category();
     }
   }
-  register() {
+
+  register():void{
     const formData = new FormData();
-    formData.append('book', new Blob([JSON.stringify(this.book)], { type: 'application/json' }));
-    
+
+    const bookData = {
+      ...this.book,   
+      author: { id: this.book.author },
+      category: {id: this.book.category}
+    };
+
+    formData.append('book', new Blob([JSON.stringify(bookData)], {type: 'application/json'}));
+
+    //formData.append('book', new Blob([JSON.stringify(this.book)], { type: 'application/json' }));
     if (this.selectedImage) {
       formData.append('image', this.selectedImage);
     }
@@ -82,11 +101,8 @@ export class NewBookComponent {
       });
  
       this.books[position] = retorno;
-      
       this.book = new Book(); 
-      
       this.btnRegister = true;
-      
       this.table = true;
       
       alert("Book successfully altered!");
@@ -100,13 +116,9 @@ export class NewBookComponent {
       let position = this.books.findIndex(obj => {
         return obj.code == this.book.code;
       });
-
       this.books.splice(position, 1);
-
       this.book = new Book(); 
-
       this.btnRegister = true;
-
       this.table = true;
 
       alert("Book removed!");
@@ -114,19 +126,25 @@ export class NewBookComponent {
     });
   }
   cancel():void{
-
     this.book = new Book(); 
-
     this.btnRegister = true;
-
     this.table = true;
-
   }
 
+  getCategories():void{
+    this.categoryService.allCategories()
+    .subscribe(retorno => this.categories = retorno);
+  }
+  getAuthors():void{
+    this.authorService.allAuthors()
+    .subscribe(retorno => this.authors = retorno);
+  }
   
 
   ngOnInit(){
     this.select();
+    this.getCategories();
+    this.getAuthors();
   }
 
 }

@@ -16,7 +16,8 @@ export class BookService {
     return this.http.get<Book[]>(this.url + "/book/all");
   }
 
-
+  //FormData permite construir facilmente conjuntos de pares chave/valor
+  //para enviar dados via requisições HTTP
   addNewBook(bookData: FormData): Observable<Book> {
       return this.http.post<Book>(this.url + "/book/new", bookData);
   }

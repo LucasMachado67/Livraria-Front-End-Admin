@@ -5,7 +5,10 @@
     <label for="Title">Title:</label>
     <input type="text" placeholder="Title" class="form-control" name="Title" [(ngModel)]="book.title">
     <label for="author">Author:</label>
-    <input type="text" placeholder="Author" class="form-control" name="author" [(ngModel)]="book.author">
+    <select name="author" class="authorSelect" [(ngModel)]="book.author">
+        <option selected disabled>Author</option>
+        <option *ngFor="let a of authors" [ngValue]="a.id">{{a.author}}</option>
+    </select>
     <label for="year">Year:</label>
     <input type="number" placeholder="Year" class="form-control" name="year" [(ngModel)]="book.year">
     <label for="price">Price:</label>
@@ -18,42 +21,21 @@
     <input type="text" placeholder="Description" class="form-control" name="description" [(ngModel)]="book.description">
     
     <div>
-        <select name="language" [(ngModel)]="book.language">
+        <select name="category" class="characteristics" [(ngModel)]="book.category">
+            <option selected disabled>Category</option>
+            <option *ngFor="let c of categories" [value]="c.id">{{c.category}}</option>
+        </select>
+        <select name="language" [(ngModel)]="book.language" class="characteristics">
             <option value="" disabled selected>Language</option>
             <option value="English">English</option>
             <option value="Portuguese">Portuguese</option>
         </select>
-        <select name="bookCover" [(ngModel)]="book.bookCover">
+        <select name="bookCover" [(ngModel)]="book.bookCover" class="characteristics">
             <option value="" disabled selected>Book-Cover</option>
             <option value="HardCover">Hard-Cover</option>
             <option value="SoftCover">Soft-Cover</option>
         </select>
     </div>
-    <div class="categories">
-        <span>Categories</span>
-        <div class="d-flex justify-content-between">
-
-            <div class="group1 d-flex flex-column">
-                <label class="form-check-label"> <input type="checkbox" class="form-check-input" [value]="'Biographies & Memoirs'" (change)="onCategoryChange($event)">Biographies & Memoirs</label>
-                <label class="form-check-label"> <input type="checkbox" class="form-check-input" [value]="'Children\'s Books'" (change)="onCategoryChange($event)">Children's Books</label>
-                <label class="form-check-label"> <input type="checkbox" class="form-check-input" [value]="'Computers & Technology'" (change)="onCategoryChange($event)">Computers & Technology</label>
-                <label class="form-check-label"> <input type="checkbox" class="form-check-input" [value]="'Cookbooks, Food'" (change)="onCategoryChange($event)">Cookbooks, Food</label>
-                <label class="form-check-label"> <input type="checkbox" class="form-check-input" [value]="'Education & Teaching'" (change)="onCategoryChange($event)">Education & Teaching</label>
-                <label class="form-check-label"> <input type="checkbox" class="form-check-input" [value]="'Health & Fitness'" (change)="onCategoryChange($event)">Health & Fitness</label>
-                <label class="form-check-label"> <input type="checkbox" class="form-check-input" [value]="'History'" (change)="onCategoryChange($event)">History</label>
-            </div>
-            <div class="group2 d-flex flex-column">
-                <label class="form-check-label"> <input type="checkbox" class="form-check-input" [value]="'Humor & Entertainment'" (change)="onCategoryChange($event)">Humor & Entertainment</label>
-                <label class="form-check-label"> <input type="checkbox" class="form-check-input" [value]="'Literature & Fiction'" (change)="onCategoryChange($event)">Literature & Fiction</label>
-                <label class="form-check-label"> <input type="checkbox" class="form-check-input" [value]="'Mangas'" (change)="onCategoryChange($event)">Mangas</label>
-                <label class="form-check-label"> <input type="checkbox" class="form-check-input" [value]="'Mystery, Thriller & Suspense'" (change)="onCategoryChange($event)">Mystery, Thriller & Suspense</label>
-                <label class="form-check-label"> <input type="checkbox" class="form-check-input" [value]="'Romance'" (change)="onCategoryChange($event)">Romance</label>
-                <label class="form-check-label"> <input type="checkbox" class="form-check-input" [value]="'Science Fiction & Fantasy'" (change)="onCategoryChange($event)">Science Fiction & Fantasy</label>
-                <label class="form-check-label"> <input type="checkbox" class="form-check-input" [value]="'Self-Help'" (change)="onCategoryChange($event)">Self-Help</label>
-                <label class="form-check-label"> <input type="checkbox" class="form-check-input" [value]="'Teen & Young Adult'" (change)="onCategoryChange($event)">Teen & Young Adult</label>
-            </div>
-        </div>
-        </div>
         
     <input type="button" value="Register" *ngIf="btnRegister" class="btn btn-primary" (click)="register()">
     <input type="button" value="Edit" *ngIf="!btnRegister" class="btn btn-warning" (click)="editBook()">
@@ -79,7 +61,7 @@
          <tr *ngFor="let b of books; index as i">
             <td>{{i+1}}</td>
             <td>{{b.title}}</td>
-            <td>{{b.author}}</td>
+            <td>{{b.author.author}}</td>
             <td>{{b.year}}</td>
             <td>{{b.price}}</td>
             <td>{{b.pages}}</td>
