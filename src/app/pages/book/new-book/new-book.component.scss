@@ -47,11 +47,60 @@ input[type="button"]{
 }
 
 .btn-primary{
+    --bs-btn-border-color: var(--bd-violet-bg)!important;
+    --bs-btn-hover-color: var(--bs-white);
     width: 100px;
     height: 40px;
 }
 .btn-primary:hover{
     scale: 1.1;
+}
+
+.selectCategoryButton{
+    margin: 30px 0px 30px 0px;
+    background-color: blueviolet;
+}
+
+// .categoryPage {
+//     position: fixed; 
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%); 
+//   width: 900px;
+//   height: 600px;
+//   background: rgb(41, 41, 41); 
+//   z-index: 9999;
+//   border: 2px solid rgb(166, 61, 211);
+
+// }
+
+.categoryPage {
+    position: fixed; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  width: 900px;
+  height: 600px;
+  background: rgb(41, 41, 41); 
+  z-index: 9999;
+  border: 2px solid rgb(166, 61, 211);
+    .closeButton {
+        position: absolute;
+        margin: 5px;
+        right: 3px;
+        background: none;
+        border: none;
+        border-radius: 0;
+        font-size: 20px;
+        cursor: pointer;
+        color: red;
+        font-weight: bold;
+    }
+
+    .closeButton:hover {
+        color: white;
+        background-color: red;
+    }
 }
 
 .categories{

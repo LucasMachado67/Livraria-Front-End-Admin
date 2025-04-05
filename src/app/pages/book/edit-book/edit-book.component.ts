@@ -78,16 +78,16 @@ export class EditBookComponent {
     }
   }
 
-  onCategoryChange(event: Event): void {
-    const checkbox = event.target as HTMLInputElement;
+  // onCategoryChange(event: Event): void {
+  //   const checkbox = event.target as HTMLInputElement;
 
-    if (checkbox.checked) {
-          this.book.category = new Category();
-          this.book.category.category = checkbox.value;
-        } else {
-          this.book.category = new Category();
-        }
-  }
+  //   if (checkbox.checked) {
+  //         this.book.category = new Category();
+  //         this.book.category.category = checkbox.value;
+  //       } else {
+  //         this.book.category = new Category();
+  //       }
+  // }
 
   ngOnInit(): void {
 
