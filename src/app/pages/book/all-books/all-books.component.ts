@@ -37,7 +37,7 @@ export class AllBooksComponent {
   selectBook(position:number):void{
 
     this.book = this.books[position];
-    this.router.navigate(['/allBooks', this.book.code]);
+    this.router.navigate(['/book/', this.book.code]);
     
   }
 

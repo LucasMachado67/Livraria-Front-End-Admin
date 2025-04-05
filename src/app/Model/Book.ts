@@ -14,6 +14,6 @@ export class Book{
     image: string | ArrayBuffer | null = null;
     quantity: number = 0;
     description: string = "";
-    category: Category = new Category();
+    categories: Category[] = [];
 
 }

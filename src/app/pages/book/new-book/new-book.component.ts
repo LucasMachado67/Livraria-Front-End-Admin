@@ -9,6 +9,7 @@ import { Category } from '../../../Model/Category';
 import { Author } from '../../../Model/Author';
 import { CategoryService } from '../../../service/category.service';
 import { AuthorService } from '../../../service/author.service';
+import { CategorySelectComponent } from "../../../components/category-select/category-select.component";
 
 @Component({
   selector: 'app-new-book',
@@ -17,7 +18,8 @@ import { AuthorService } from '../../../service/author.service';
     HttpClientModule,
     CommonModule,
     FormsModule,
-    NavigationComponent
+    NavigationComponent,
+    CategorySelectComponent
 ],
   templateUrl: './new-book.component.html',
   styleUrl: './new-book.component.scss'
@@ -32,7 +34,9 @@ export class NewBookComponent {
   categories:Category[] = [];
   btnRegister:Boolean = true;
   table:Boolean = true;
+  categoryPage:Boolean = true;
   selectedImage: File | null = null;
+  categoriesSelectedToRegister: Category [] = [];
 
   constructor(private service:BookService,
     private categoryService:CategoryService,
@@ -50,24 +54,30 @@ export class NewBookComponent {
     }
   }
 
-  onCategoryChange(event: Event): void {
+  onCategoryChange(event: Event, category: Category): void {
     const checkbox = event.target as HTMLInputElement;
 
     if (checkbox.checked) {
-      this.book.category = new Category();
-      this.book.category.category = checkbox.value;
+      // Adiciona categoria se não estiver na lista
+      if (!this.book.categories.some(c => c.category === category.category)) {
+        this.book.categories.push(category);
+      }
     } else {
-      this.book.category = new Category();
+      // Remove categoria da lista
+      this.book.categories = this.book.categories.filter(
+        c => c.category !== category.category
+      );
     }
   }
 
   register():void{
-    const formData = new FormData();
 
+    this.book.categories = this.categoriesSelectedToRegister;
+    const formData = new FormData();
     const bookData = {
       ...this.book,   
       author: { id: this.book.author },
-      category: {id: this.book.category}
+      categories: this.book.categories.map(c => ({ id: c.id }))
     };
 
     formData.append('book', new Blob([JSON.stringify(bookData)], {type: 'application/json'}));
@@ -138,6 +148,11 @@ export class NewBookComponent {
   getAuthors():void{
     this.authorService.allAuthors()
     .subscribe(retorno => this.authors = retorno);
+  }
+
+  updateSelectedCategories(categories : Category[]){
+    this.categoriesSelectedToRegister = categories;
+    console.log("Categorias atualizadas: " + JSON.stringify(categories, null, 2));
   }
   
 
