@@ -7,15 +7,14 @@ import { NgIf } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-new-author',
-  standalone: true,
-  imports: [
-    NavigationComponent,
-    FormsModule,
-    NgIf
-  ],
-  templateUrl: './new-author.component.html',
-  styleUrl: './new-author.component.scss'
+    selector: 'app-new-author',
+    imports: [
+        NavigationComponent,
+        FormsModule,
+        NgIf
+    ],
+    templateUrl: './new-author.component.html',
+    styleUrl: './new-author.component.scss'
 })
 export class NewAuthorComponent {
 

@@ -5,15 +5,14 @@ import { Router } from '@angular/router';
 import { BookService } from '../../service/book.service';
 
 @Component({
-  selector: 'app-menu',
-  standalone: true,
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    RouterModule
-  ],
-  templateUrl: './menu.component.html',
-  styleUrl: './menu.component.scss'
+    selector: 'app-menu',
+    imports: [
+        RouterLink,
+        RouterLinkActive,
+        RouterModule
+    ],
+    templateUrl: './menu.component.html',
+    styleUrl: './menu.component.scss'
 })
 export class MenuComponent {
 

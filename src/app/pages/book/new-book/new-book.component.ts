@@ -15,22 +15,20 @@ import { BookValidation } from '../../../Utils/Validations/book.validation';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-new-book',
-  standalone: true,
-  imports: [
-    
-// TODO: `HttpClientModule` should not be imported into a component directly.
-// Please refactor the code to add `provideHttpClient()` call to the provider list in the
-// application bootstrap logic and remove the `HttpClientModule` import from this component.
-HttpClientModule,
-    CommonModule,
-    FormsModule,
-    NavigationComponent,
-    CategorySelectComponent,
-    NgxMaskDirective
-],
-  templateUrl: './new-book.component.html',
-  styleUrl: './new-book.component.scss'
+    selector: 'app-new-book',
+    imports: [
+        // TODO: `HttpClientModule` should not be imported into a component directly.
+        // Please refactor the code to add `provideHttpClient()` call to the provider list in the
+        // application bootstrap logic and remove the `HttpClientModule` import from this component.
+        HttpClientModule,
+        CommonModule,
+        FormsModule,
+        NavigationComponent,
+        CategorySelectComponent,
+        NgxMaskDirective
+    ],
+    templateUrl: './new-book.component.html',
+    styleUrl: './new-book.component.scss'
 })
 export class NewBookComponent {
 

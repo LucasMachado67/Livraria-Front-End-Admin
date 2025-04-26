@@ -8,22 +8,20 @@ import { AdminService } from '../../../service/admin.service';
 import { Admin } from '../../../Model/Admin';
 
 @Component({
-  selector: 'app-all-admins',
-  standalone: true,
-  imports: [NavigationComponent,
-    
-// TODO: `HttpClientModule` should not be imported into a component directly.
-// Please refactor the code to add `provideHttpClient()` call to the provider list in the
-// application bootstrap logic and remove the `HttpClientModule` import from this component.
-HttpClientModule,
-    CommonModule,
-    FormsModule,
-    RouterLink,
-    RouterLinkActive,
-    RouterModule
-  ],
-  templateUrl: './all-admins.component.html',
-  styleUrl: './all-admins.component.scss'
+    selector: 'app-all-admins',
+    imports: [NavigationComponent,
+        // TODO: `HttpClientModule` should not be imported into a component directly.
+        // Please refactor the code to add `provideHttpClient()` call to the provider list in the
+        // application bootstrap logic and remove the `HttpClientModule` import from this component.
+        HttpClientModule,
+        CommonModule,
+        FormsModule,
+        RouterLink,
+        RouterLinkActive,
+        RouterModule
+    ],
+    templateUrl: './all-admins.component.html',
+    styleUrl: './all-admins.component.scss'
 })
 export class AllAdminsComponent {
 

@@ -14,21 +14,19 @@ import { CategorySelectComponent } from '../../../components/category-select/cat
 import { BookDetailsDTO } from '../../../Model/BookDetailsDTO';
 
 @Component({
-  selector: 'app-edit-book',
-  standalone: true,
-  imports: [
-    
-// TODO: `HttpClientModule` should not be imported into a component directly.
-// Please refactor the code to add `provideHttpClient()` call to the provider list in the
-// application bootstrap logic and remove the `HttpClientModule` import from this component.
-HttpClientModule,
-    CommonModule,
-    FormsModule,
-    NavigationComponent,
-    CategorySelectComponent
-  ],
-  templateUrl: './edit-book.component.html',
-  styleUrl: './edit-book.component.scss',
+    selector: 'app-edit-book',
+    imports: [
+        // TODO: `HttpClientModule` should not be imported into a component directly.
+        // Please refactor the code to add `provideHttpClient()` call to the provider list in the
+        // application bootstrap logic and remove the `HttpClientModule` import from this component.
+        HttpClientModule,
+        CommonModule,
+        FormsModule,
+        NavigationComponent,
+        CategorySelectComponent
+    ],
+    templateUrl: './edit-book.component.html',
+    styleUrl: './edit-book.component.scss'
 })
 export class EditBookComponent {
   book = new Book();

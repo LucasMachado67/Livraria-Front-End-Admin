@@ -6,13 +6,12 @@ import { ErrandService } from '../../service/errand.service';
 import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-all-errands',
-  standalone: true,
-  imports: [NavigationComponent,
-    NgFor
-  ],
-  templateUrl: './all-errands.component.html',
-  styleUrl: './all-errands.component.scss'
+    selector: 'app-all-errands',
+    imports: [NavigationComponent,
+        NgFor
+    ],
+    templateUrl: './all-errands.component.html',
+    styleUrl: './all-errands.component.scss'
 })
 export class AllErrandsComponent {
 

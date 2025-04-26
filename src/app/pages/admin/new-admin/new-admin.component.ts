@@ -8,15 +8,14 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
-  selector: 'app-new-admin',
-  standalone: true,
-  imports: [NavigationComponent,
-    CommonModule,
-    FormsModule,
-    NgxMaskDirective
-  ],
-  templateUrl: './new-admin.component.html',
-  styleUrl: './new-admin.component.scss'
+    selector: 'app-new-admin',
+    imports: [NavigationComponent,
+        CommonModule,
+        FormsModule,
+        NgxMaskDirective
+    ],
+    templateUrl: './new-admin.component.html',
+    styleUrl: './new-admin.component.scss'
 })
 export class NewEmployeeComponent {
 

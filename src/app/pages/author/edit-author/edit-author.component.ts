@@ -8,15 +8,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-edit-author',
-  standalone: true,
-  imports: [
-    NavigationComponent,
-    FormsModule,
-    CommonModule
-  ],
-  templateUrl: './edit-author.component.html',
-  styleUrl: './edit-author.component.scss'
+    selector: 'app-edit-author',
+    imports: [
+        NavigationComponent,
+        FormsModule,
+        CommonModule
+    ],
+    templateUrl: './edit-author.component.html',
+    styleUrl: './edit-author.component.scss'
 })
 export class EditAuthorComponent implements OnInit{
 

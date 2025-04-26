@@ -7,18 +7,17 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-all-authors',
-  standalone: true,
-  imports: [
-    NavigationComponent,
-    FormsModule,
-    CommonModule,
-    RouterLink,
-    RouterLinkActive,
-    RouterModule
-  ],
-  templateUrl: './all-authors.component.html',
-  styleUrl: './all-authors.component.scss'
+    selector: 'app-all-authors',
+    imports: [
+        NavigationComponent,
+        FormsModule,
+        CommonModule,
+        RouterLink,
+        RouterLinkActive,
+        RouterModule
+    ],
+    templateUrl: './all-authors.component.html',
+    styleUrl: './all-authors.component.scss'
 })
 export class AllAuthorsComponent implements OnInit{
 

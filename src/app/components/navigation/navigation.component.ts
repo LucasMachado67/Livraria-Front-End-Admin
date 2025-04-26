@@ -4,15 +4,14 @@ import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/rou
 import { BookService } from '../../service/book.service';
 
 @Component({
-  selector: 'app-navigation',
-  standalone: true,
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    RouterModule
-  ],
-  templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.scss'
+    selector: 'app-navigation',
+    imports: [
+        RouterLink,
+        RouterLinkActive,
+        RouterModule
+    ],
+    templateUrl: './navigation.component.html',
+    styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent {
 

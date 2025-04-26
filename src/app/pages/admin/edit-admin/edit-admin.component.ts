@@ -9,19 +9,17 @@ import { AdminService } from '../../../service/admin.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-edit-admin',
-  standalone: true,
-  imports: [NavigationComponent,
-    
-// TODO: `HttpClientModule` should not be imported into a component directly.
-// Please refactor the code to add `provideHttpClient()` call to the provider list in the
-// application bootstrap logic and remove the `HttpClientModule` import from this component.
-HttpClientModule,
-    CommonModule,
-    FormsModule,
-  ],
-  templateUrl: './edit-admin.component.html',
-  styleUrl: './edit-admin.component.scss'
+    selector: 'app-edit-admin',
+    imports: [NavigationComponent,
+        // TODO: `HttpClientModule` should not be imported into a component directly.
+        // Please refactor the code to add `provideHttpClient()` call to the provider list in the
+        // application bootstrap logic and remove the `HttpClientModule` import from this component.
+        HttpClientModule,
+        CommonModule,
+        FormsModule,
+    ],
+    templateUrl: './edit-admin.component.html',
+    styleUrl: './edit-admin.component.scss'
 })
 export class EditAdminComponent {
 

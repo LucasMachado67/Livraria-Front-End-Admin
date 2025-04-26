@@ -7,11 +7,10 @@ import { CategoryService } from '../../../service/category.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-new-category',
-  standalone: true,
-  imports: [NavigationComponent, FormsModule, NgIf],
-  templateUrl: './new-category.component.html',
-  styleUrl: './new-category.component.scss',
+    selector: 'app-new-category',
+    imports: [NavigationComponent, FormsModule, NgIf],
+    templateUrl: './new-category.component.html',
+    styleUrl: './new-category.component.scss'
 })
 export class NewCategoryComponent {
   category = new Category();

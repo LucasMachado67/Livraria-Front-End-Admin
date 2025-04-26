@@ -9,20 +9,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-edit-category',
-  standalone: true,
-  imports: [
-    NavigationComponent,
-    CommonModule,
-    
-// TODO: `HttpClientModule` should not be imported into a component directly.
-// Please refactor the code to add `provideHttpClient()` call to the provider list in the
-// application bootstrap logic and remove the `HttpClientModule` import from this component.
-HttpClientModule,
-    FormsModule
-  ],
-  templateUrl: './edit-category.component.html',
-  styleUrl: './edit-category.component.scss'
+    selector: 'app-edit-category',
+    imports: [
+        NavigationComponent,
+        CommonModule,
+        // TODO: `HttpClientModule` should not be imported into a component directly.
+        // Please refactor the code to add `provideHttpClient()` call to the provider list in the
+        // application bootstrap logic and remove the `HttpClientModule` import from this component.
+        HttpClientModule,
+        FormsModule
+    ],
+    templateUrl: './edit-category.component.html',
+    styleUrl: './edit-category.component.scss'
 })
 export class EditCategoryComponent implements OnInit{
 

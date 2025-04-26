@@ -9,23 +9,21 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 
 
 @Component({
-  selector: 'app-all-books',
-  standalone: true,
-  imports: [
-    NavigationComponent,
-    
-// TODO: `HttpClientModule` should not be imported into a component directly.
-// Please refactor the code to add `provideHttpClient()` call to the provider list in the
-// application bootstrap logic and remove the `HttpClientModule` import from this component.
-HttpClientModule,
-    CommonModule,
-    FormsModule,
-    RouterLink,
-    RouterLinkActive,
-    RouterModule
-  ],
-  templateUrl: './all-books.component.html',
-  styleUrl: './all-books.component.scss'
+    selector: 'app-all-books',
+    imports: [
+        NavigationComponent,
+        // TODO: `HttpClientModule` should not be imported into a component directly.
+        // Please refactor the code to add `provideHttpClient()` call to the provider list in the
+        // application bootstrap logic and remove the `HttpClientModule` import from this component.
+        HttpClientModule,
+        CommonModule,
+        FormsModule,
+        RouterLink,
+        RouterLinkActive,
+        RouterModule
+    ],
+    templateUrl: './all-books.component.html',
+    styleUrl: './all-books.component.scss'
 })
 export class AllBooksComponent {
 

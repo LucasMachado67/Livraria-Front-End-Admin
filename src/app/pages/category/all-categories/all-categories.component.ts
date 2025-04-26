@@ -12,18 +12,17 @@ import {
 } from '@angular/router';
 
 @Component({
-  selector: 'app-all-categories',
-  standalone: true,
-  imports: [
-    NavigationComponent,
-    FormsModule,
-    NgFor,
-    RouterLink,
-    RouterLinkActive,
-    RouterModule,
-  ],
-  templateUrl: './all-categories.component.html',
-  styleUrl: './all-categories.component.scss',
+    selector: 'app-all-categories',
+    imports: [
+        NavigationComponent,
+        FormsModule,
+        NgFor,
+        RouterLink,
+        RouterLinkActive,
+        RouterModule,
+    ],
+    templateUrl: './all-categories.component.html',
+    styleUrl: './all-categories.component.scss'
 })
 export class AllCategoriesComponent implements OnInit {
   categories: Category[] = [];

@@ -6,14 +6,13 @@ import { Category } from '../../Model/Category';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-category-select',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule
-  ],
-  templateUrl: './category-select.component.html',
-  styleUrl: './category-select.component.scss'
+    selector: 'app-category-select',
+    imports: [
+        CommonModule,
+        FormsModule
+    ],
+    templateUrl: './category-select.component.html',
+    styleUrl: './category-select.component.scss'
 })
 export class CategorySelectComponent implements OnInit{
 
