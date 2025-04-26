@@ -4,11 +4,10 @@
     <div class="category" *ngFor="let c of categories">
         <label for="" class="labelCategory">
             <p>
-                <input type="checkbox" [value]="c.category" (change)="onCategoryChange($event, c)">
+                <input type="checkbox" [value]="c.category" (change)="onCategoryChange($event, c)" [checked]="isCategorySelected(c)">
                 {{c.category}}
             </p>
         </label>
     </div>
   </div>
 </div>
-<button class="btn btn-success">Confirm</button>

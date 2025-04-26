@@ -1,36 +1,126 @@
 <app-navigation></app-navigation>
 <form action="">
-    <img src="../../../assets/dia-mundial-do-livro.png" alt="">
-    <input type="file" placeholder="Image" class="form-control" name="Image" (change)="onFileChange($event)">
-    <label for="Title">Title:</label>
-    <input type="text" placeholder="Title" class="form-control" name="Title" [(ngModel)]="book.title">
-    <label for="author">Author:</label>
-    <input type="text" placeholder="Author" class="form-control" name="author" [(ngModel)]="book.author.author">
-    <label for="year">Year:</label>
-    <input type="number" placeholder="Year" class="form-control" name="year" [(ngModel)]="book.year">
-    <label for="price">Price:</label>
-    <input type="number" placeholder="Price" class="form-control" name="price" [(ngModel)]="book.price">
-    <label for="pages">Pages:</label>
-    <input type="number" placeholder="Pages" class="form-control" name="pages" [(ngModel)]="book.pages">
-    <label for="quantity">Quantity:</label>
-    <input type="number" placeholder="Quantity" class="form-control" name="quantity" [(ngModel)]="book.quantity">
-    <label for="description">Description:</label>
-    <input type="text" placeholder="Description" class="form-control" name="description" [(ngModel)]="book.description">
-    
-    <div>
-        <select name="language" [(ngModel)]="book.language">
-            <option value="" disabled selected>Language</option>
-            <option value="English">English</option>
-            <option value="Portuguese">Portuguese</option>
-        </select>
-        <select name="bookCover" [(ngModel)]="book.bookCover">
-            <option value="" disabled selected>Book-Cover</option>
-            <option value="HardCover">Hard-Cover</option>
-            <option value="SoftCover">Soft-Cover</option>
-        </select>
-    </div>
-        
-    <input type="button" value="Edit"  class="btn btn-warning" (click)="editBook()">
-    <input type="button" value="Remove"  class="btn btn-danger" (click)="removeBook()">
-    <input type="button" value="Cancel"  class="btn btn-secondary" (click)="cancel()">
+  <img src="../../../assets/dia-mundial-do-livro.png" alt="" />
+  <input
+    type="file"
+    placeholder="Image"
+    class="form-control"
+    name="Image"
+    (change)="onFileChange($event)"
+  />
+  <p class="imageVerification" *ngIf="archiveName">{{ archiveName }}</p>
+  <label for="Title">Title:</label>
+  <input
+    type="text"
+    placeholder="Title"
+    class="form-control"
+    name="Title"
+    [(ngModel)]="book.title"
+  />
+  <label for="author">Author:</label>
+  <input
+    type="text"
+    class="form-control"
+    [value]="book.author.author"
+    disabled
+  />
+  <select name="author" class="authorSelect" [(ngModel)]="book.author">
+    <option *ngFor="let a of authors" [ngValue]="a">{{ a.author }}</option>
+  </select>
+  <label for="year">Year:</label>
+  <input
+    type="number"
+    placeholder="Year"
+    class="form-control"
+    name="year"
+    [(ngModel)]="book.year"
+  />
+  <label for="price">Price:</label>
+  <input
+    type="number"
+    placeholder="Price"
+    class="form-control"
+    name="price"
+    [(ngModel)]="book.price"
+  />
+  <label for="pages">Pages:</label>
+  <input
+    type="number"
+    placeholder="Pages"
+    class="form-control"
+    name="pages"
+    [(ngModel)]="book.pages"
+  />
+  <label for="quantity">Quantity:</label>
+  <input
+    type="number"
+    placeholder="Quantity"
+    class="form-control"
+    name="quantity"
+    [(ngModel)]="book.quantity"
+  />
+  <label for="description">Description:</label>
+  <input
+    type="text"
+    placeholder="Description"
+    class="form-control"
+    name="description"
+    [(ngModel)]="book.description"
+  />
+
+  <button
+    (click)="categoryPage = false"
+    class="btn btn-primary selectCategoryButton"
+  >
+    Categories
+  </button>
+
+  <div *ngIf="!categoryPage" class="categoryPage">
+    <button
+      (click)="categoryPage = true"
+      class="btn btn-primary selectCategoryButton closeButton"
+    >
+      X
+    </button>
+    <app-category-select
+    [selected]="book.categories"
+    (choosedCategories)="updateSelectedCategories($event)">
+    </app-category-select>
+  </div>
+
+  <div>
+    <select name="language" [(ngModel)]="book.language" class="characteristics">
+      <option value="" disabled selected>Language</option>
+      <option value="English">English</option>
+      <option value="Portuguese">Portuguese</option>
+    </select>
+    <select
+      name="bookCover"
+      [(ngModel)]="book.bookCover"
+      class="characteristics"
+    >
+      <option value="" disabled selected>Book-Cover</option>
+      <option value="HardCover">Hard-Cover</option>
+      <option value="SoftCover">Soft-Cover</option>
+    </select>
+  </div>
+
+  <input
+    type="button"
+    value="Edit"
+    class="btn btn-warning"
+    (click)="editBook()"
+  />
+  <input
+    type="button"
+    value="Remove"
+    class="btn btn-danger"
+    (click)="removeBook()"
+  />
+  <input
+    type="button"
+    value="Cancel"
+    class="btn btn-secondary"
+    (click)="cancel()"
+  />
 </form>

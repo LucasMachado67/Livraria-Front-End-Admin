@@ -3,13 +3,13 @@
 <img src="../../../assets/employee.png" alt="">
 <form action="">
     <label for="Email">Email:</label>
-    <input type="text" placeholder="Email" class="form-control" name="Email" [(ngModel)]="admin.email">
+    <input type="text" placeholder="Email" class="form-control" name="Email" [(ngModel)]="admin.email" mask="">
     <label for="Name">Name:</label>
     <input type="text" placeholder="Name" class="form-control" name="Name" [(ngModel)]="admin.name">
     <label for="Password">Password:</label>
     <input type="text" placeholder="Password" class="form-control" name="Password" [(ngModel)]="admin.password">
     <label for="Phone">Phone:</label>
-    <input type="text" placeholder="Phone" class="form-control" name="Phone" maxlength="12" [(ngModel)]="admin.phone" (input)="formatPhone()">
+    <input type="text" placeholder="Phone" class="form-control" name="Phone" maxlength="14" [(ngModel)]="admin.phone" mask="(00) 0000-0000">
     <div>
         <select name="sex" [(ngModel)]="admin.sex">
             <option value="" disabled selected>Sex</option>

@@ -42,7 +42,7 @@ export const routes: Routes = [
         path: "admin/:id", component: EditAdminComponent
     },
     {
-        path: "allErrands",component: AllErrandsComponent
+        path: "errand/all",component: AllErrandsComponent
     },
     {
         path: "author/new", component: NewAuthorComponent

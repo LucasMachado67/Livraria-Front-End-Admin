@@ -3,7 +3,7 @@ import { NavigationComponent } from "../../../components/navigation/navigation.c
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { AdminService } from '../../../service/admin.service';
 import { Admin } from '../../../Model/Admin';
 
@@ -13,7 +13,10 @@ import { Admin } from '../../../Model/Admin';
   imports: [NavigationComponent,
     HttpClientModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterLink,
+    RouterLinkActive,
+    RouterModule
   ],
   templateUrl: './all-admins.component.html',
   styleUrl: './all-admins.component.scss'

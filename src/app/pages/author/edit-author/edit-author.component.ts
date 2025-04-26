@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { Author } from '../../../Model/Author';
 import { AuthorService } from '../../../service/author.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-author',
@@ -22,8 +23,11 @@ export class EditAuthorComponent implements OnInit{
   author = new Author();
   authors:Author[] = [];
 
-  constructor(private service:AuthorService, private router:Router, private activatedRoute:ActivatedRoute){}
-
+  constructor(private service:AuthorService,
+    private router:Router,
+    private activatedRoute:ActivatedRoute,
+    private toastr:ToastrService){}
+  //Método para editar o author
   editAuthor():void{
     this.service.editAuthor(this.author.id, this.author)
       .subscribe((retorno) => {
@@ -33,12 +37,19 @@ export class EditAuthorComponent implements OnInit{
         this.authors[position] = retorno;
 
         this.author = new Author();
-        alert("Author successfuly updated!");
+        this.toastr.success("Author updated","Updated!", {
+          disableTimeOut: false,
+          timeOut: 3000,
+          extendedTimeOut: 1000,
+          tapToDismiss: true,
+          progressBar: true
+        });
         this.router.navigate(["/author/all"]);
       });
   }
-
+  //Método para remover o author
   removeAuthor():void{
+    
     this.service.deleteAuthor(this.author.id)
     .subscribe((retorno) => {
       let position = this.authors.findIndex(obj =>{
@@ -46,16 +57,23 @@ export class EditAuthorComponent implements OnInit{
       });
       this.authors.splice(position, 1);
       this.author = new Author();
-      alert("Author removed!");
+      this.toastr.info("Author removed","Removed!", {
+        disableTimeOut: false,
+        timeOut: 3000,
+        extendedTimeOut: 1000,
+        tapToDismiss: true,
+        progressBar: true
+      });
       this.router.navigate(["/author/all"]);
     });
   }
-
+  //Método para redirecionar para a página mostrando todos os authors
   cancel():void{
     this.router.navigate(["/author/all"]);
   }
 
   ngOnInit(): void {
+    //Rebebendo o id do author de acordo com o selecionado pela posição no all-authors-component
       this.activatedRoute.paramMap.subscribe(params =>{
         let id = params.get('id');
         if(id){

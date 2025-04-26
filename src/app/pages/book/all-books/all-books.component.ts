@@ -5,7 +5,8 @@ import { BookService } from '../../../service/book.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-all-books',
@@ -14,7 +15,10 @@ import { Router } from '@angular/router';
     NavigationComponent,
     HttpClientModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    RouterLink,
+    RouterLinkActive,
+    RouterModule
   ],
   templateUrl: './all-books.component.html',
   styleUrl: './all-books.component.scss'
@@ -26,19 +30,12 @@ export class AllBooksComponent {
   books:Book[] = [];
   selectedImage: File | null = null;
 
-  constructor(private service:BookService,
-    private router: Router
+  constructor(private service:BookService
   ){}
-
+  //Método buscando os livros do banco de dados
   select():void {
     this.service.select()
     .subscribe(retorno => this.books = retorno);
-  }
-  selectBook(position:number):void{
-
-    this.book = this.books[position];
-    this.router.navigate(['/book/', this.book.code]);
-    
   }
 
   ngOnInit(){

@@ -8,20 +8,6 @@
     <input type="button" value="Register" *ngIf="btnRegister" class="btn btn-primary" (click)="register()">
 </form>
 
-<table class="table" *ngIf="table">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Author</th>
-        </tr>
-    </thead>
-    <tbody>
-         <tr *ngFor="let c of categories; index as i">
-            <td>{{i+1}}</td>
-            <td>{{c.category}}</td>
-         </tr>
-    </tbody>
-</table>
 
 
 

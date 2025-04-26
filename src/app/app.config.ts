@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideEnvironmentNgxMask } from 'ngx-mask';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,6 +15,10 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
     importProvidersFrom(RouterModule.forRoot(routes)),
     provideAnimations(),
-    FormsModule
+    FormsModule,
+    provideRouter(routes),
+    provideHttpClient(),
+    provideEnvironmentNgxMask(),
+    provideToastr()
   ]
 };

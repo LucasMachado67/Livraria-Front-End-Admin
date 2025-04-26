@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavigationComponent } from '../../../components/navigation/navigation.component';
 import { Author } from '../../../Model/Author';
 import { AuthorService } from '../../../service/author.service';
 import { FormsModule } from '@angular/forms';
-import { NgIf, NgFor } from '@angular/common';
+import { NgIf } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-author',
@@ -11,32 +12,32 @@ import { NgIf, NgFor } from '@angular/common';
   imports: [
     NavigationComponent,
     FormsModule,
-    NgIf,
-    NgFor
+    NgIf
   ],
   templateUrl: './new-author.component.html',
   styleUrl: './new-author.component.scss'
 })
-export class NewAuthorComponent implements OnInit{
+export class NewAuthorComponent {
 
   author = new Author();
   btnRegister:Boolean = true;
   table:Boolean = true;
   authors:Author[] = [];
 
-  constructor(private service:AuthorService){}
+  constructor(private service:AuthorService,
+    private toastr:ToastrService
+  ){}
   
-
-  getAll():void{
-    this.service.allAuthors()
-    .subscribe(retorno => this.authors = retorno);
-  }
-
+  //Método para criar um novo author
   register(){
     if(this.author.author != ""){
       this.service.newAuthor(this.author).subscribe(response => {
-        console.log('New author Added!', response);
-        alert('New author Added!')
+        this.toastr.success( this.author.author + " adicionado","Success!", {
+          disableTimeOut: false,
+          timeOut: 3000,
+          extendedTimeOut: 1000,
+          tapToDismiss: true,
+      });
         this.author.author = "";
       });
       
@@ -44,10 +45,6 @@ export class NewAuthorComponent implements OnInit{
       alert("fill the field 'author'")
     }
     
-  }
-
-  ngOnInit(): void {
-    this.getAll();
   }
   
 }
