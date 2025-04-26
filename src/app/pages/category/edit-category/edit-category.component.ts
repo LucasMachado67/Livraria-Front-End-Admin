@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationComponent } from '../../../components/navigation/navigation.component';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Category } from '../../../Model/Category';
 import { CategoryService } from '../../../service/category.service';
@@ -14,7 +14,11 @@ import { ToastrService } from 'ngx-toastr';
   imports: [
     NavigationComponent,
     CommonModule,
-    HttpClientModule,
+    
+// TODO: `HttpClientModule` should not be imported into a component directly.
+// Please refactor the code to add `provideHttpClient()` call to the provider list in the
+// application bootstrap logic and remove the `HttpClientModule` import from this component.
+HttpClientModule,
     FormsModule
   ],
   templateUrl: './edit-category.component.html',

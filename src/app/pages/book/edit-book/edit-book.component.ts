@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Book } from '../../../Model/Book';
 import { BookService } from '../../../service/book.service';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NavigationComponent } from '../../../components/navigation/navigation.component';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,7 +17,11 @@ import { BookDetailsDTO } from '../../../Model/BookDetailsDTO';
   selector: 'app-edit-book',
   standalone: true,
   imports: [
-    HttpClientModule,
+    
+// TODO: `HttpClientModule` should not be imported into a component directly.
+// Please refactor the code to add `provideHttpClient()` call to the provider list in the
+// application bootstrap logic and remove the `HttpClientModule` import from this component.
+HttpClientModule,
     CommonModule,
     FormsModule,
     NavigationComponent,
