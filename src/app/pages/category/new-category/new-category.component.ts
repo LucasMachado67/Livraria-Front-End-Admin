@@ -1,40 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavigationComponent } from '../../../components/navigation/navigation.component';
 import { FormsModule } from '@angular/forms';
-import { NgIf, NgFor } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { Category } from '../../../Model/Category';
 import { CategoryService } from '../../../service/category.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-category',
   standalone: true,
-  imports: [NavigationComponent, FormsModule, NgIf, NgFor],
+  imports: [NavigationComponent, FormsModule, NgIf],
   templateUrl: './new-category.component.html',
   styleUrl: './new-category.component.scss',
 })
-export class NewCategoryComponent implements OnInit {
+export class NewCategoryComponent {
   category = new Category();
   btnRegister: Boolean = true;
   table: Boolean = true;
   categories: Category[] = [];
 
-  constructor(private service: CategoryService) {}
-
-  getAll():void{
-    this.service.allCategories()
-    .subscribe(retorno => this.categories = retorno);
-  }
-
+  constructor(private service: CategoryService,
+    private toastr:ToastrService
+  ) {}
+  //Método para criar uma nova categoria
   register(){
-    
     this.service.newCategory(this.category).subscribe(response => {
-      console.log('New category Added!', response);
-      alert('New category Added!')
+      this.toastr.success("Nova categoria adicionada","Success!", {
+        disableTimeOut: false,
+        timeOut: 3000,
+        extendedTimeOut: 1000,
+        tapToDismiss: true,
+        progressBar: true
+    });
     });
     this.category.category = "";
   }
 
-  ngOnInit(): void {
-    this.getAll();
-  }
 }

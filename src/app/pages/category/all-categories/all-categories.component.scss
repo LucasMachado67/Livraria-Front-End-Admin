@@ -1,3 +1,19 @@
-.table{
-    margin-top: 100px;
+
+.nav{
+    margin-bottom: 100px;
+}
+.container{
+    margin: 0px, 0px, 0px, 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .new{
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 110px;
+    }
+    table{
+        margin-top: 120px;
+    }
 }

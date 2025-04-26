@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Book } from '../Model/Book';
 import { Observable } from 'rxjs';
 import { environment } from '../../environment';
+import { BookDetailsDTO } from '../Model/BookDetailsDTO'
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,16 @@ export class BookService {
       return this.http.post<Book>(this.url + "/book/new", bookData);
   }
 
-  edit(obj:Book, code:number):Observable<Book>{
-    return this.http.put<Book>(this.url + "/book/" + code, obj);
+  edit(book: Book, imageFile?: File):Observable<BookDetailsDTO>{
+    const formData = new FormData();
+    const bookBlob = new Blob([JSON.stringify(book)], {type: 'application/json'});
+
+    formData.append('book', bookBlob);
+    if(imageFile){
+      formData.append('image', imageFile);
+    }
+
+    return this.http.put<BookDetailsDTO>(this.url + "/book/" + book.code, formData);
   }
 
   remove(code:number) :Observable<void>{
@@ -34,5 +43,16 @@ export class BookService {
 
   getBookByCode(code: number): Observable<any> {
     return this.http.get(`${this.url}/book/${code}`);
+  }
+
+  formatPrice(priceStr: string): number  {
+    //Caso a String tenha ',' Vai trocar para '.';
+    const value = String(priceStr).replace(',', '.');
+    //Convertendo para parseFloat
+    let numberValue = parseFloat(value);
+    if(isNaN(numberValue)){
+      throw new Error("Valor Inválido");
+    }
+    return numberValue;
   }
 }

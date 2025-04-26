@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Author } from '../../../Model/Author';
 import { NavigationComponent } from '../../../components/navigation/navigation.component';
-import { Router } from '@angular/router';
+import { Router,RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 import { AuthorService } from '../../../service/author.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -12,7 +12,10 @@ import { CommonModule } from '@angular/common';
   imports: [
     NavigationComponent,
     FormsModule,
-    CommonModule
+    CommonModule,
+    RouterLink,
+    RouterLinkActive,
+    RouterModule
   ],
   templateUrl: './all-authors.component.html',
   styleUrl: './all-authors.component.scss'
@@ -26,12 +29,12 @@ export class AllAuthorsComponent implements OnInit{
   ngOnInit(): void {
     this.getAll();
   }
-
+  //Método para pegar a posição do author para editar ou apagar
   selectAuthor(position:number):void{
     this.author = this.authors[position];
     this.router.navigate(["/author/", this.author.id], { state: {author: this.author}});
   }
-
+  //Método mostrando todos os authors disponíveis no banco de dados
   getAll(){
     this.service.allAuthors()
     .subscribe(retorno => this.authors = retorno);

@@ -1,5 +1,6 @@
-<app-navigation></app-navigation>
-
+<app-navigation class="nav"></app-navigation>
+<div class="container">
+    <button class="btn btn-primary new" routerLink="/admin/new" routerLinkActive="active">New Admin</button>
 <table class="table" *ngIf="table">
     <thead>
         <tr>
@@ -21,3 +22,4 @@
          </tr>
     </tbody>
 </table>
+</div>

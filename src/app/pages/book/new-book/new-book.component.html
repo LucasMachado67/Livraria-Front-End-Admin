@@ -1,5 +1,4 @@
 
-
 <app-navigation></app-navigation>
 <form action="">
   <img src="../../../assets/dia-mundial-do-livro.png" alt="" />
@@ -25,35 +24,41 @@
   </select>
   <label for="year">Year:</label>
   <input
-    type="number"
+    type="text"
     placeholder="Year"
     class="form-control"
     name="year"
-    [(ngModel)]="book.year"
+    mask="0000"
+    [max]="2025"
+    [(ngModel)]="this.year"
   />
   <label for="price">Price:</label>
   <input
-    type="number"
+    type="text"
     placeholder="Price"
     class="form-control"
     name="price"
-    [(ngModel)]="book.price"
-  />
+    mask="separator.2"
+    [(ngModel)]="this.price"
+    />
   <label for="pages">Pages:</label>
   <input
-    type="number"
+    type="text"
     placeholder="Pages"
     class="form-control"
     name="pages"
-    [(ngModel)]="book.pages"
+    mask="0000"
+    [(ngModel)]="this.pages"
   />
   <label for="quantity">Quantity:</label>
   <input
-    type="number"
+    type="text"
     placeholder="Quantity"
     class="form-control"
     name="quantity"
-    [(ngModel)]="book.quantity"
+    mask="000"
+    [(ngModel)]="this.quantity"
+    maxlength="100"
   />
   <label for="description">Description:</label>
   <input
@@ -95,57 +100,3 @@
     class="btn btn-primary"
     (click)="register()"
   />
-  <input
-    type="button"
-    value="Edit"
-    *ngIf="!btnRegister"
-    class="btn btn-warning"
-    (click)="editBook()"
-  />
-  <input
-    type="button"
-    value="Remove"
-    *ngIf="!btnRegister"
-    class="btn btn-danger"
-    (click)="removeBook()"
-  />
-  <input
-    type="button"
-    value="Cancel"
-    *ngIf="!btnRegister"
-    class="btn btn-secondary"
-    (click)="cancel()"
-  />
-</form>
-
-<table class="table" *ngIf="table">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Year</th>
-      <th>Price</th>
-      <th>Pages</th>
-      <th>Language</th>
-      <th>Book Cover</th>
-      <th>Quantity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let b of books; index as i">
-      <td>{{ i + 1 }}</td>
-      <td>{{ b.title }}</td>
-      <td>{{ b.author.author }}</td>
-      <td>{{ b.year }}</td>
-      <td>{{ b.price }}</td>
-      <td>{{ b.pages }}</td>
-      <td>{{ b.language }}</td>
-      <td>{{ b.bookCover }}</td>
-      <td>{{ b.quantity }}</td>
-      <td>
-        <button class="btn btn-success" (click)="selectBook(i)">Select</button>
-      </td>
-    </tr>
-  </tbody>
-</table>

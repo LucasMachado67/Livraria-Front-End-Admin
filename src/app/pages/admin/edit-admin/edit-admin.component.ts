@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Admin } from '../../../Model/Admin';
 import { AdminService } from '../../../service/admin.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-edit-admin',
@@ -25,9 +26,10 @@ export class EditAdminComponent {
 
   constructor(private service:AdminService,
     private routeActive: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr:ToastrService
   ){}
-
+  //Método para editar o admin
   editAdmin():void{
     this.service.edit(this.admin, this.admin.id)
     .subscribe((retorno) => {
@@ -35,17 +37,18 @@ export class EditAdminComponent {
       let position = this.admins.findIndex((obj) => 
         obj.id == retorno.id
       );
- 
       this.admins[position] = retorno;
-      
       this.admin = new Admin(); 
-      
-      alert("Admin successfully altered!");
-
+      this.toastr.info(this.admin.name + "updated","Updated!", {
+        disableTimeOut: false,
+        timeOut: 3000,
+        extendedTimeOut: 1000,
+        tapToDismiss: true,
+      });
       this.router.navigate(["/admin/all"])
     });
   }
-
+  //Método para remover o admin
   removeAdmin():void{
     this.service.remove(this.admin.id)
     .subscribe((retorno) => {
@@ -55,7 +58,12 @@ export class EditAdminComponent {
       });
       this.admins.splice(position, 1);
       this.admin = new Admin(); 
-      alert("Admin " + this.admin.name +"removed!");
+      this.toastr.warning("Admin removed","Removed!", {
+        disableTimeOut: false,
+        timeOut: 3000,
+        extendedTimeOut: 1000,
+        tapToDismiss: true,
+      });
       this.router.navigate(['/admin/all']);
     });
   }
