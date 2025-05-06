@@ -1,20 +1,43 @@
 <app-navigation class="nav"></app-navigation>
+
 <div class="container">
-    <button class="btn btn-primary new" routerLink="/category/new" routerLinkActive="active">New Category</button>
-<table class="table" >
-    <thead>
-        <tr>
-            <th>Code</th>
-            <th>Category</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-         <tr *ngFor="let c of categories; index as i">
-            <td>{{i+1}}</td>
-            <td>{{c.category}}</td>
-            <td><button class="btn btn-success" (click)="selectCategory(i)">Select</button></td>
-         </tr>
-    </tbody>
-</table>
+    <button class="btn btn-success new" routerLink="/category/new" routerLinkActive="active">New category</button>
+    <div class="mb-4">
+        <p-button type="button" icon="pi pi-chevron-left" (click)="prev()" [disabled]="isFirstPage()" text />
+        <p-button type="button" icon="pi pi-refresh" (click)="reset()" text />
+        <p-button type="button" icon="pi pi-chevron-right" (click)="next()" [disabled]="isLastPage()" text />
+    </div>
+
+    <p-table 
+        [value]="categories"
+        [paginator]="true"
+        [rows]="5"
+        [first]="first"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        (onPage)="pageChange($event)"
+        [rowsPerPageOptions]="[5, 10, 25, 50]"
+    >
+        <ng-template #header>
+            <tr>
+                <th style="width:33,3%">#</th>
+                <th style="width:33,3%">Category</th>
+                <th style="width:33,3%">Action</th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-category let-rowIndex="rowIndex">
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.category }}</td>
+                <td><p-button label="Select" variant="text" [raised]="true" severity="help" (click)="selectCategory(rowIndex)"/></td>
+            </tr>
+        </ng-template>
+        <ng-template #paginatorleft>
+            <p-button type="button" icon="pi pi-plus" text />
+        </ng-template>
+        <ng-template #paginatorright>
+            <p-button type="button" icon="pi pi-cloud" text />
+        </ng-template>
+    </p-table>
 </div>

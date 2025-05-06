@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-all-authors',
+    standalone: true,
     imports: [
         NavigationComponent,
         FormsModule,

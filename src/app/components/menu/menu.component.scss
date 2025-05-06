@@ -1,20 +1,23 @@
 .container{
     display: flex;
     margin: 0px;
+    margin-top: 110px;
     flex-direction: column;
-    border-right: 3px solid black;
-    height: 664px;
+    border-right: 3px solid var(--secondary-color);
+    height: 619px;
     width: 300px;
     overflow-y: auto;
 
     .imgDisplay{
         display: flex;
-        border: 1px solid black;
+        border: 2px solid var(--secondary-color);
+        background-color: var(--terciary-color);
         height: 200px;
         justify-content: center;
         align-items: center;
         img{
             height: 100px;
+            background-color: var(--terciary-color);
         }
     }
 
@@ -25,13 +28,13 @@
         .nav-item{
             font-size: 25px;
             font-weight: bold;
-            border-top: 1px solid black;
-            border-bottom: 1px solid black;
+            border-top: 2px solid var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
             a{
-                color: black;
+                color: var(--font-color);
                 &:hover{
                     margin-right: 5px;
-                    color: rgb(89, 167, 239);
+                    color: var(--hover-font-color);
                     scale: 1.1;
                 }
             }

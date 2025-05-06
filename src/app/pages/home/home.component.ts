@@ -4,6 +4,7 @@ import { MenuComponent } from '../../components/menu/menu.component';
 
 @Component({
     selector: 'app-home',
+    standalone: true,
     imports: [
         NavigationComponent,
         MenuComponent

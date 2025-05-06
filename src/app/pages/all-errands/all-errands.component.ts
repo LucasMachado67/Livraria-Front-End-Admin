@@ -7,8 +7,10 @@ import { NgFor } from '@angular/common';
 
 @Component({
     selector: 'app-all-errands',
-    imports: [NavigationComponent,
-        NgFor
+    standalone: true,
+    imports: [
+      NavigationComponent,
+      NgFor
     ],
     templateUrl: './all-errands.component.html',
     styleUrl: './all-errands.component.scss'

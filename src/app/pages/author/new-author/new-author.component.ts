@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-new-author',
+    standalone: true,
     imports: [
         NavigationComponent,
         FormsModule,

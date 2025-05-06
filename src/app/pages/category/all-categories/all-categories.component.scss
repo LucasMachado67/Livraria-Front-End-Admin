@@ -1,19 +1,24 @@
 
 .nav{
-    margin-bottom: 100px;
+    margin-bottom: 150px;
 }
 .container{
     margin: 0px, 0px, 0px, 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100vw;
     .new{
         justify-content: center;
         flex-direction: column;
         align-items: center;
-        width: 110px;
+        width: 130px;
     }
-    table{
-        margin-top: 120px;
+    ng-templete{
+        background-color: rgb(24, 24, 27)!important;
+    }
+    p-table{
+        width: 99vw;
+        height: 100%;
     }
 }

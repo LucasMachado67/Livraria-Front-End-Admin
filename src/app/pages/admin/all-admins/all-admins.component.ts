@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavigationComponent } from "../../../components/navigation/navigation.component";
-import {} from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
@@ -9,11 +8,8 @@ import { Admin } from '../../../Model/Admin';
 
 @Component({
     selector: 'app-all-admins',
+    standalone: true,
     imports: [NavigationComponent,
-        // TODO: `HttpClientModule` should not be imported into a component directly.
-        // Please refactor the code to add `provideHttpClient()` call to the provider list in the
-        // application bootstrap logic and remove the `HttpClientModule` import from this component.
-        HttpClientModule,
         CommonModule,
         FormsModule,
         RouterLink,

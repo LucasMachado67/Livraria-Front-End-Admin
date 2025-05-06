@@ -1,8 +1,42 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    background: var(--primary-color);
+}
+body{
+  background: var(--primary-color) !important;
 }
 
+:root{
+    --primary-color: #292932;
+    --secondary-color: #5772b0;
+    --terciary-color: #fdfdfd;
+    --font-color:#fdfdfd;
+    --hover-font-color:rgb(51, 121, 202);
+}
+
+@keyframes borderTransition {
+    0% {
+      border-color: var(--terciary-color);
+    }
+    50% {
+      border-color: var(--secondary-color);
+    }
+    100% {
+      border-color: var(--terciary-color);
+    }
+}
+
+@keyframes borderAnimation {
+    0% {
+      border-image-source: linear-gradient(270deg, var(--terciary-color), var(--secondary-color), var(--terciary-color));
+    }
+    50% {
+      border-image-source: linear-gradient(270deg, var(--secondary-color), var(--terciary-color), var(--secondary-color));
+    }
+    100% {
+      border-image-source: linear-gradient(270deg, var(--terciary-color), var(--secondary-color), var(--terciary-color));
+    }
+  }

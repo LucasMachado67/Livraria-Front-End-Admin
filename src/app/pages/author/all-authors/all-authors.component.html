@@ -1,20 +1,30 @@
 <app-navigation class="nav"></app-navigation>
 <div class="container">
-    <button class="btn btn-primary new" routerLink="/author/new" routerLinkActive="active">New Author</button>
-<table class="table" >
+  <button
+    class="btn btn-primary new"
+    routerLink="/author/new"
+    routerLinkActive="active"
+  >
+    New Author
+  </button>
+  <table class="table">
     <thead>
-        <tr>
-            <th>Code</th>
-            <th>Author Name</th>
-            <th>Actions</th>
-        </tr>
+      <tr>
+        <th>Code</th>
+        <th>Author Name</th>
+        <th>Actions</th>
+      </tr>
     </thead>
     <tbody>
-         <tr *ngFor="let a of authors; index as i">
-            <td>{{i+1}}</td>
-            <td>{{a.author}}</td>
-            <td><button class="btn btn-success" (click)="selectAuthor(i)">Select</button></td>
-         </tr>
+      <tr *ngFor="let a of authors; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ a.author }}</td>
+        <td>
+          <button class="btn btn-success" (click)="selectAuthor(i)">
+            Select
+          </button>
+        </td>
+      </tr>
     </tbody>
-</table>
+  </table>
 </div>

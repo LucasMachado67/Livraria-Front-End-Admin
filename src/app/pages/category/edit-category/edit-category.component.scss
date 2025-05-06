@@ -6,7 +6,8 @@ img{
     justify-content: center;
     align-items: center;
     margin: auto;
-    margin-top: 65px;
+    margin-top: 150px;
+    border-radius: 100%;
 }
 
 form{
@@ -16,7 +17,7 @@ form{
 }
 label{
     float: inline-start;
-    color: Purple;
+    color: var(--secondary-color);
     font-size: 20px;
     font-weight: bold;
     margin-top: 20px;
@@ -36,10 +37,10 @@ select{
     margin: 10px;
     padding: 8px;       
     font-size: 16px;   
-    border: 1px solid #ccc; 
+    border: 1px solid var(--secondary-color); 
     border-radius: 4px;   
-    background-color: #f9f9f9; 
-    color: purple;        
+    background-color: var(--terciary-color); 
+    color: var(--secondary-color);        
     cursor: pointer;
 }
 

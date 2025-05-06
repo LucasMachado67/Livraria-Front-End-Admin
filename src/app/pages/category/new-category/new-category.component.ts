@@ -8,7 +8,12 @@ import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-new-category',
-    imports: [NavigationComponent, FormsModule, NgIf],
+    standalone: true,
+    imports: [
+      NavigationComponent,
+      FormsModule,
+      NgIf
+    ],
     templateUrl: './new-category.component.html',
     styleUrl: './new-category.component.scss'
 })

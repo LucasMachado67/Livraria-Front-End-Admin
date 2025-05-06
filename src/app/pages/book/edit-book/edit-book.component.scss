@@ -1,7 +1,9 @@
 img{
     width: 250px;
     margin-bottom: 30px;
-    margin-top: 100px
+    margin-top: 150px;
+    background-color: var(--terciary-color);
+    border-radius: 100%;
 }
 
 form{
@@ -11,7 +13,7 @@ form{
 }
 label{
     float: inline-start;
-    color: Purple;
+    color: var(--secondary-color);
     font-size: 20px;
     font-weight: bold;
 }
@@ -26,7 +28,7 @@ label{
     text-align: left;
     border-radius: 5px;
     height: 40px;
-    border-color: rgb(230, 230, 230);
+    border-color: var(--secondary-color);
 }
 
 input{
@@ -43,10 +45,10 @@ input[type="button"]{
     margin: 10px;
     padding: 8px;       
     font-size: 16px;   
-    border: 1px solid #ccc; 
+    border: 1px solid var(--secondary-color); 
     border-radius: 4px;   
-    background-color: #f9f9f9; 
-    color: purple;        
+    background-color: var(--terciary-color); 
+    color: var(--secondary-color);        
     cursor: pointer;
 }
 
@@ -62,7 +64,6 @@ input[type="button"]{
 
 .selectCategoryButton{
     margin: 30px 0px 30px 0px;
-    background-color: blueviolet;
 }
 
 
@@ -73,9 +74,9 @@ input[type="button"]{
   transform: translate(-50%, -50%); 
   width: 900px;
   height: 600px;
-  background: rgb(41, 41, 41); 
+  background: var(--primary-color); 
   z-index: 9999;
-  border: 2px solid rgb(166, 61, 211);
+  border: 2px solid var(--secondary-color);
     .closeButton {
         position: absolute;
         margin: 5px;
@@ -90,7 +91,7 @@ input[type="button"]{
     }
 
     .closeButton:hover {
-        color: white;
+        color: var(--font-color);
         background-color: red;
     }
 }
@@ -102,7 +103,7 @@ input[type="button"]{
     margin: 0 auto;
     span{
         margin: 20px;
-        color: purple;
+        color: var(--secondary-color);
         font-size: 30px;
         font-weight: bold;
     }

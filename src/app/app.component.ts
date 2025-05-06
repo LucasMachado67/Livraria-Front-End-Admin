@@ -1,18 +1,14 @@
 import { Component, LOCALE_ID } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import {} from '@angular/common/http';
 import localePt from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 
 @Component({
     selector: 'app-root',
+    standalone: true,
     imports: [
         RouterOutlet,
-        // TODO: `HttpClientModule` should not be imported into a component directly.
-        // Please refactor the code to add `provideHttpClient()` call to the provider list in the
-        // application bootstrap logic and remove the `HttpClientModule` import from this component.
-        HttpClientModule,
         FormsModule,
         RouterModule
     ],

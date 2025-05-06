@@ -6,6 +6,7 @@ import { BookService } from '../../service/book.service';
 
 @Component({
     selector: 'app-menu',
+    standalone: true,
     imports: [
         RouterLink,
         RouterLinkActive,

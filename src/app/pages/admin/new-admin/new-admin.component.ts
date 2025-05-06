@@ -9,6 +9,7 @@ import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
     selector: 'app-new-admin',
+    standalone: true,
     imports: [NavigationComponent,
         CommonModule,
         FormsModule,
