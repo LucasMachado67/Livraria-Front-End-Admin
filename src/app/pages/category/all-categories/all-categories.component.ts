@@ -26,7 +26,7 @@ import { ButtonModule } from 'primeng/button';
 export class AllCategoriesComponent implements OnInit {
   categories: Category[] = [];
   category = new Category();
-  category1!: Category[];
+  categoryPagination!: Category[];
   allCategories: any[] = [];
   totalCategories: number = 0;
   first = 0;
@@ -43,8 +43,6 @@ export class AllCategoriesComponent implements OnInit {
   //Antigo Método para pegar a categoria pela posição, afim de editar ou deletar a categoria selecionada
   selectCategory(position: number) {
     this.category = this.categories[position];
-    console.log('Categoria selecionada:', this.category);
-    console.log('ID da categoria:', this.category.id);
     this.router.navigate(['/category/', this.category.id], {
       state: { category: this.category },
     });
@@ -84,11 +82,11 @@ export class AllCategoriesComponent implements OnInit {
     this.rows = event.rows;
   }
   isLastPage(): boolean {
-    return this.category1 ? this.first + this.rows >= this.category1.length : true;
+    return this.categoryPagination ? this.first + this.rows >= this.categoryPagination.length : true;
   }
 
   isFirstPage(): boolean {
-    return this.category1 ? this.first === 0 : true;
+    return this.categoryPagination ? this.first === 0 : true;
   }
 
 }

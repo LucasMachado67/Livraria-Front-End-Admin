@@ -1,40 +1,48 @@
 <app-navigation class="nav"></app-navigation>
 <div class="container">
     <button class="btn btn-primary new" routerLink="/book/new" routerLinkActive="active">New Book</button>
-  <table class="table" *ngIf="table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Year</th>
-        <th>Price</th>
-        <th>Pages</th>
-        <th>Language</th>
-        <th>Book Cover</th>
-        <th>Quantity</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let b of books; index as i">
-        <td>{{ i + 1 }}</td>
-        <td>{{ b.title }}</td>
-        <td>{{ b.author.author }}</td>
-        <td>{{ b.year }}</td>
-        
-        <td>{{ b.price | number: '1.2-2'}}</td>
-        <td>{{ b.pages }}</td>
-        <td>{{ b.language }}</td>
-        <td>{{ b.bookCover }}</td>
-        <td>{{ b.quantity }}</td>
-        <td>
-          <button class="btn btn-success" *ngIf="b.code" [routerLink]="['/book/', b.code]" 
-          routerLinkActive="active">
-            Select
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <p-table 
+        [value]="books"
+        [paginator]="true"
+        [rows]="5"
+        [first]="first"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        (onPage)="pageChange($event)"
+        [rowsPerPageOptions]="[5, 10, 25, 50]"
+    >
+        <ng-template #header>
+            <tr>
+                <th style="width:11,11%">#</th>
+                <th pSortableColumn="title" style="width:11,11%">Book <p-sortIcon field="title" /></th>
+                <th pSortableColumn="author" style="width:11,11%">Author <p-sortIcon field="author" /></th>
+                <th pSortableColumn="price" style="width:11,11%">Price <p-sortIcon field="price" /></th>
+                <th pSortableColumn="language" style="width:11,11%">Language <p-sortIcon field="language" /></th>
+                <th pSortableColumn="quantity" style="width:11,11%">Quantity <p-sortIcon field="quantity" /></th>
+                <th pSortableColumn="bookCover" style="width:11,11%">Book Cover <p-sortIcon field="bookCover" /></th>
+                <th pSortableColumn="year" style="width:11,11%">Year <p-sortIcon field="year" /></th>
+                <th pSortableColumn="code" style="width:11,11%">Action </th>
+            </tr>
+        </ng-template>
+        <ng-template #body let-book let-rowIndex="rowIndex">
+            <tr>
+                <td>{{ book.code }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author.author }}</td>
+                <td>{{ book.price }}</td>
+                <td>{{ book.language }}</td>
+                <td>{{ book.quantity }}</td>
+                <td>{{ book.bookCover }}</td>
+                <td>{{ book.year }}</td>
+                <td><p-button label="Select" variant="text" [raised]="true" severity="help" (click)="selectBook(rowIndex)"/></td>
+            </tr>
+        </ng-template>
+        <ng-template #paginatorleft>
+            <p-button type="button" icon="pi pi-plus" text />
+        </ng-template>
+        <ng-template #paginatorright>
+            <p-button type="button" icon="pi pi-cloud" text />
+        </ng-template>
+    </p-table>
 </div>

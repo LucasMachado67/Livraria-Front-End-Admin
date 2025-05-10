@@ -1,7 +1,15 @@
 <nav class="navbar bg-body-tertiary">
-    <div class="container">
-      <a class="navbar-brand" routerLink="/home" routerLinkActive="active">
-          <i class="fa-solid fa-house" width="30" height="24"></i>
-      </a>
+  <div class="container">
+    <a class="navbar-brand" routerLink="/home" routerLinkActive="active">
+      <i class="fa-solid fa-house" width="30" height="24"></i>
+    </a>
+    <div [ngClass]="this.mode">
+      <button *ngIf="mode === 'light-mode'" class="moon" (click)="turnToDarkMode()">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <button *ngIf="mode === 'dark-mode'" class="sun" (click)="turnToLightMode()">
+        <i class="fa-solid fa-sun"></i>
+      </button>
     </div>
-  </nav>
+  </div>
+</nav>

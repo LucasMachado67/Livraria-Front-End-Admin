@@ -1,3 +1,37 @@
+
+
+
+// :root{
+//     --primary-color: #292932;
+//     --secondary-color: #5772b0;
+//     --terciary-color: #fdfdfd;
+//     --font-color:#fdfdfd;
+//     --hover-font-color:rgb(51, 121, 202);
+// }
+
+.dark-mode{
+  --primary-color: #292932;
+  --secondary-color: #5772b0;
+  --terciary-color: #fdfdfd;
+  --font-color:#fdfdfd;
+  --hover-font-color:rgb(51, 121, 202);
+}
+
+.light-mode{
+  --primary-color: #ffffff;
+  --secondary-color: #01040b;
+  --terciary-color: #abaaaa;
+  --font-color:#000000;
+  --hover-font-color:rgb(10, 123, 251);
+  --p-select-option-color: black;
+  --p-select-overlay-color: black;
+  --p-select-option-selected-color: black;
+  --p-select-option-selected-focus-color: rgb(201, 197, 197);
+}
+
+body{
+  background: var(--primary-color) !important;
+}
 * {
     margin: 0;
     padding: 0;
@@ -5,18 +39,6 @@
     font-family: "Poppins", sans-serif;
     background: var(--primary-color);
 }
-body{
-  background: var(--primary-color) !important;
-}
-
-:root{
-    --primary-color: #292932;
-    --secondary-color: #5772b0;
-    --terciary-color: #fdfdfd;
-    --font-color:#fdfdfd;
-    --hover-font-color:rgb(51, 121, 202);
-}
-
 @keyframes borderTransition {
     0% {
       border-color: var(--terciary-color);

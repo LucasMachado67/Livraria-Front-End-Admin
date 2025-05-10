@@ -4,8 +4,9 @@ import { Book } from '../../../Model/Book';
 import { BookService } from '../../../service/book.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
-
+import { RouterLink, RouterLinkActive, RouterModule, Router } from '@angular/router';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
     selector: 'app-all-books',
@@ -16,7 +17,9 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
         FormsModule,
         RouterLink,
         RouterLinkActive,
-        RouterModule
+        RouterModule,
+        TableModule,
+        ButtonModule
     ],
     templateUrl: './all-books.component.html',
     styleUrl: './all-books.component.scss'
@@ -27,8 +30,15 @@ export class AllBooksComponent {
   table:Boolean = true;
   books:Book[] = [];
   selectedImage: File | null = null;
+  bookPagination!: Book[];
+  allBooks: any[] = [];
+  totalBooks: number = 0;
+  first = 0;
+  code:number = 0;
+  rows: number = 0;
 
-  constructor(private service:BookService
+  constructor(private service:BookService,
+    private router:Router
   ){}
   //Método buscando os livros do banco de dados
   select():void {
@@ -36,7 +46,39 @@ export class AllBooksComponent {
     .subscribe(retorno => this.books = retorno);
   }
 
+  selectBook(position: number) {
+    this.book = this.books[position];
+    console.log('Categoria selecionada:', this.book);
+    console.log('ID da categoria:', this.book.code);
+    this.router.navigate(['/book/', this.book.code], {
+      state: { book: this.book },
+    });
+  }
+
   ngOnInit(){
     this.select();
+  }
+
+  
+  //Métodos para a pagination
+  next() {
+    this.first = this.first - this.rows;
+  }
+  prev() {
+    this.first = this.first - this.rows;
+  }
+  reset() {
+    this.first = 0;
+  }
+  pageChange(event: { first: number; rows: number; }) {
+    this.first = event.first;
+    this.rows = event.rows;
+  }
+  isLastPage(): boolean {
+    return this.bookPagination ? this.first + this.rows >= this.bookPagination.length : true;
+  }
+
+  isFirstPage(): boolean {
+    return this.bookPagination ? this.first === 0 : true;
   }
 }

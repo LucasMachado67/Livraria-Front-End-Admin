@@ -1,24 +1,45 @@
-
-.nav{
-    margin-bottom: 150px;
+.nav {
+  margin-bottom: 150px;
 }
-.container{
-    margin: 0px, 0px, 0px, 0px;
-    display: flex;
+.container {
+  margin: 0px, 0px, 0px, 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  .new {
+    justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
-    .new{
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        width: 130px;
+    width: 130px;
+  }
+  ::ng-deep .p-datatable thead th {
+    background-color: var(--primary-color) !important;
+    color: var(--font-color);
+  }
+
+  ::ng-deep .p-paginator {
+    background-color: var(--primary-color);
+    color: var(--font-color);
+    border-top: 1px solid #444;
+  }
+
+  ::ng-deep .p-paginator .p-paginator-pages .p-paginator-page {
+    background-color: transparent;
+    color: var(--font-color);
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  p-table {
+    width: 99vw;
+    height: 100%;
+    th {
+      color: var(--font-color);
     }
-    ng-templete{
-        background-color: rgb(24, 24, 27)!important;
+
+    td {
+      color: var(--font-color) !important;
     }
-    p-table{
-        width: 99vw;
-        height: 100%;
-    }
+  }
 }
