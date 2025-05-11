@@ -13,16 +13,16 @@ import { CategorySelectComponent } from '../../../components/category-select/cat
 import { BookDetailsDTO } from '../../../Model/BookDetailsDTO';
 
 @Component({
-    selector: 'app-edit-book',
-    standalone: true,
-    imports: [
-        CommonModule,
-        FormsModule,
-        NavigationComponent,
-        CategorySelectComponent
-    ],
-    templateUrl: './edit-book.component.html',
-    styleUrl: './edit-book.component.scss'
+  selector: 'app-edit-book',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    NavigationComponent,
+    CategorySelectComponent,
+  ],
+  templateUrl: './edit-book.component.html',
+  styleUrl: './edit-book.component.scss',
 })
 export class EditBookComponent {
   book = new Book();
@@ -47,7 +47,6 @@ export class EditBookComponent {
     private authorService: AuthorService
   ) {}
 
-  
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
 
@@ -56,17 +55,12 @@ export class EditBookComponent {
     }
   }
 
-  loadExistedData() {
-    this.archiveName = 'Archive-selected';
-  }
-
-  
   editBook(): void {
     this.book.categories = this.categoriesSelectedToRegister;
-  
-    this.service.edit(this.book, this.selectedImage ?? undefined)
-      .subscribe((dto: BookDetailsDTO) => {
-        
+
+    this.service
+      .edit(this.book, this.selectedImage ?? undefined)
+      .subscribe((dto: Book) => {
         this.btnRegister = true;
         this.table = true;
         alert('Book successfully altered!');
@@ -128,25 +122,42 @@ export class EditBookComponent {
 
   ngOnInit(): void {
     this.getCategories();
-    this.loadExistedData();
     this.loadBook();
   }
 
   loadBook(): void {
     const code = Number(this.route.snapshot.paramMap.get('code'));
-    
-    if (code) {
-      this.service.getBookByCode(code).subscribe(
-        (dto) => {
-          this.book = dto;
-          this.selectedCategories = this.book.categories;
-        },
-        (error) => {
-          console.error('Error while trying to load book:', error);
-        }
-      );
-    } else {
-      console.error('Book code not Found.');
-    }
+
+    this.service.getBookByCode(code).subscribe(
+      (data: BookDetailsDTO) => {
+        this.book.code = data.code;
+        this.book.title = data.title;
+        this.book.year = data.year;
+        this.book.price = data.price;
+        this.book.pages = data.pages;
+        this.book.language = data.language;
+        this.book.bookCover = data.bookCover;
+        this.book.image = data.image;
+        this.book.quantity = data.quantity;
+        this.book.description = data.description;
+        this.book.author = {
+          id: data.authorId,
+          author: data.authorName,
+        };
+        const categoryArray = data.categories.split(',').map((c) => c.trim());
+        this.book.categories = this.categories.filter(
+          (cat) => categoryArray.includes(cat.category)
+        );
+      },
+      (error) => {
+        console.error('Error while trying to load book:', error);
+      }
+    );
+  }
+
+  loadCategories() {
+    this.categoryService.allCategories().subscribe((categories) => {
+      this.categories = categories; // Aqui você carrega todas as categorias possíveis
+    });
   }
 }

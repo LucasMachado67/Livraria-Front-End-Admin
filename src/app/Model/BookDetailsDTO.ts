@@ -11,5 +11,5 @@ export interface BookDetailsDTO {
   image: string;
   quantity: number;
   description: string;
-  categories: string[];
+  categories: string;
 }

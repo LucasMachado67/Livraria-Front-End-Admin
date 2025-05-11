@@ -45,11 +45,9 @@ export class AllBooksComponent {
     this.service.select()
     .subscribe(retorno => this.books = retorno);
   }
-
+  //Seleciona o livro para editar
   selectBook(position: number) {
     this.book = this.books[position];
-    console.log('Categoria selecionada:', this.book);
-    console.log('ID da categoria:', this.book.code);
     this.router.navigate(['/book/', this.book.code], {
       state: { book: this.book },
     });

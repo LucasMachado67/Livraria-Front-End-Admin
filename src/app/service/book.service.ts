@@ -23,7 +23,7 @@ export class BookService {
       return this.http.post<Book>(this.url + "/book/new", bookData);
   }
 
-  edit(book: Book, imageFile?: File):Observable<BookDetailsDTO>{
+  edit(book: Book, imageFile?: File):Observable<Book>{
     const formData = new FormData();
     const bookBlob = new Blob([JSON.stringify(book)], {type: 'application/json'});
 
@@ -32,7 +32,7 @@ export class BookService {
       formData.append('image', imageFile);
     }
 
-    return this.http.put<BookDetailsDTO>(this.url + "/book/" + book.code, formData);
+    return this.http.put<Book>(this.url + "/book/" + book.code, formData);
   }
 
   remove(code:number) :Observable<void>{
@@ -41,8 +41,8 @@ export class BookService {
 
   books:Book[] = []
 
-  getBookByCode(code: number): Observable<any> {
-    return this.http.get(`${this.url}/book/${code}`);
+  getBookByCode(code: number): Observable<BookDetailsDTO> {
+    return this.http.get<BookDetailsDTO>(`${this.url}/book/${code}`);
   }
 
   formatPrice(priceStr: string): number  {
